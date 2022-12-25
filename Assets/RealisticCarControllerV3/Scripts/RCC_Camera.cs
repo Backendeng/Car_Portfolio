@@ -22,7 +22,7 @@ public class RCC_Camera : MonoBehaviour{
 	private GameObject boundCenter;
 
 	public CameraMode cameraMode;
-	public enum CameraMode{TPS, FPS, WHEEL, FIXED}
+	public enum CameraMode{TPS, FPS, WHEEL, FIXED, CUSTOMIZE}
 
 	// The distance in the x-z plane to the target
 	public float distance = 6f;
@@ -68,7 +68,7 @@ public class RCC_Camera : MonoBehaviour{
 		if(!playerCar)
 			return;
 
-		cameraMode = CameraMode.TPS;
+		cameraMode = CameraMode.CUSTOMIZE;
 		playerRigid = playerCar.GetComponent<Rigidbody>();
 		hoodCam = playerCar.GetComponentInChildren<RCC_HoodCamera>();
 		wheelCam = playerCar.GetComponentInChildren<RCC_WheelCamera>();
@@ -102,7 +102,7 @@ public class RCC_Camera : MonoBehaviour{
 		if(index > 0)
 			index -= Time.deltaTime * 5f;
 
-		if(cameraMode == CameraMode.TPS){
+		if(cameraMode == CameraMode.CUSTOMIZE){
 			
 		}
 
@@ -152,8 +152,17 @@ public class RCC_Camera : MonoBehaviour{
 				ChangeCamera();
 			}
 			break;
+		
+		case CameraMode.CUSTOMIZE:
+			if(fixedCam){
+				CUSTOMIZE();
+			}else{
+				ChangeCamera();
+			}
+			break;
 
 		}
+		
 
 	}
 
@@ -178,6 +187,9 @@ public class RCC_Camera : MonoBehaviour{
 			break;
 		case 3:
 			cameraMode = CameraMode.FIXED;
+			break;
+		case 4:
+			cameraMode = CameraMode.CUSTOMIZE;
 			break;
 		}
 
@@ -274,6 +286,13 @@ public class RCC_Camera : MonoBehaviour{
 
 		if(fixedCam.transform.parent != null)
 			fixedCam.transform.SetParent(null);
+
+	}
+
+	void CUSTOMIZE(){
+			
+			transform.position = playerCar.transform.position;
+			targetFieldOfView = 60;
 
 	}
 

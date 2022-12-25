@@ -17,6 +17,11 @@ public class RCC_Demo : MonoBehaviour {
 	public int selectedCarIndex = 0;
 	public int selectedBehaviorIndex = 0;
 
+	void start() {
+		Spawn();
+	}
+
+
 	public void SelectVehicle (int index) {
 
 		selectedCarIndex = index;
