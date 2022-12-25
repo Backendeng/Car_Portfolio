@@ -68,7 +68,7 @@ public class RCC_Camera : MonoBehaviour{
 		if(!playerCar)
 			return;
 
-		cameraMode = CameraMode.CUSTOMIZE;
+		cameraMode = CameraMode.TPS;
 		playerRigid = playerCar.GetComponent<Rigidbody>();
 		hoodCam = playerCar.GetComponentInChildren<RCC_HoodCamera>();
 		wheelCam = playerCar.GetComponentInChildren<RCC_WheelCamera>();
@@ -292,7 +292,7 @@ public class RCC_Camera : MonoBehaviour{
 	void CUSTOMIZE(){
 			
 			transform.position = playerCar.transform.position;
-			targetFieldOfView = 60;
+			targetFieldOfView = 70;
 
 	}
 
