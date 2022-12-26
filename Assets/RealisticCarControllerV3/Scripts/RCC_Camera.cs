@@ -107,6 +107,21 @@ public class RCC_Camera : MonoBehaviour{
 		}
 
 		cam.fieldOfView = Mathf.Lerp (cam.fieldOfView, targetFieldOfView, Time.deltaTime * 3f);
+
+		if (Input.GetMouseButtonDown(0))
+        {
+			Debug.Log("sfasdf");
+            RaycastHit hit;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider != null)
+                {
+                    hit.collider.enabled = false;
+                }
+            }
+        }
 			
 	}
 	
