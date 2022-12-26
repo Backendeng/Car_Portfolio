@@ -68,6 +68,12 @@ public class RCC_Demo : MonoBehaviour {
 
 	}
 
+	public void switchCar(int SelectBehaviorIndex) {
+		selectedCarIndex = SelectBehaviorIndex;
+	}
+
+
+
 	public void SelectBehavior(int index){
 
 		selectedBehaviorIndex = index;
